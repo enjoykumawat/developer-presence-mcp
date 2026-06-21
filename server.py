@@ -45,6 +45,7 @@ def _dev(path, method="GET", data=None):
     req = urllib.request.Request(f"https://dev.to/api{path}", method=method)
     req.add_header("api-key", os.environ["DEV_TO_API"])
     req.add_header("Content-Type", "application/json")
+    req.add_header("User-Agent", "developer-presence-mcp/1.0")
     if data:
         req.data = json.dumps(data).encode()
     with urllib.request.urlopen(req) as r:
